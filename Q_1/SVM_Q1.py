@@ -200,7 +200,7 @@ class SVM(object):
         self.diff = m - M
         # computing the objective function
         self.obj_fun = ( (0.5 * (self.alpha.T @ Q @ self.alpha) ) - (self.alpha @ np.ones(self.P)) )
-
+        
         return self.alpha
     
     def _train_accuracy(self,alpha):
@@ -218,8 +218,8 @@ class SVM(object):
         #labels predictions
         y_predict = (alpha[sv] * self.y[sv]) @ SVM.Kernel(self.x, self.x[sv], self.gamma).T
         #classification function 
-        self.y_pred = np.sign(y_predict + self.b)
-        self.train_accuracy = sum(self.y_pred == self.y) / len(self.y)
+        self.train_y_pred = np.sign(y_predict + self.b)
+        self.train_accuracy = sum(self.train_y_pred == self.y) / len(self.y)
         
     def predict(self, alpha):
         

@@ -107,8 +107,8 @@ class SVM_DM(object):
         # labels predictions
         y_predict = (alpha[sv] * self.y[sv]) @ SVM_DM.Kernel(self.x, self.x[sv], self.gamma).T
         # classification function 
-        self.y_pred = np.sign(y_predict + self.b)
-        self.train_accuracy = sum(self.y_pred == self.y) / len(self.y) 
+        self.train_y_pred = np.sign(y_predict + self.b)
+        self.train_accuracy = sum(self.train_y_pred == self.y) / len(self.y) 
 
     def _get_RS(self, alpha):
         """

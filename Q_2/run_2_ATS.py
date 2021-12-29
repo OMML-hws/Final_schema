@@ -15,12 +15,15 @@ def run_SVM_Q2():
     print("C: ",svm.C)
     print("gamma value: ",svm.gamma)
     print("Number of iterations: ", svm.n_iters)
-    print("Optimization Time: " + str(round(svm.elapsed_time)) + " sec")
+    print("Optimization Time: " + str(round(svm.elapsed_time, 4)) + " sec")
     print(f"difference between m(a) and M(a): ", "{:.6f}".format(svm.diff))
     print(f"value of q: {svm.qq}")
+
     print("Train Accuracy: ", "{:.6f}".format(svm.train_accuracy))
+    print("Confusion Matrix - Train: \n", confusion_matrix(y_train,svm.train_y_pred))
+    
     print("Test Accuracy: ", "{:.6f}".format(svm.test_accuracy))
-    print("Confusion Matrix: \n", confusion_matrix(y_test,svm.y_pred))
+    print("Confusion Matrix - Test: \n", confusion_matrix(y_test,svm.y_pred))
 
 if __name__ == "__main__":
     run_SVM_Q2()

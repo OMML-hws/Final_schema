@@ -229,8 +229,8 @@ class SVM_MVP(object):
         self.b = np.mean(self.y[sv] - ((alpha[sv] * self.y[sv]) @ self.K[sv, sv]))
 
         y_predict = (alpha[sv] * self.y[sv]) @ SVM_MVP.Kernel(self.x, self.x[sv], self.gamma).T
-        self.y_pred = np.sign(y_predict + self.b)
-        self.train_accuracy = sum(self.y_pred == self.y) / len(self.y)
+        self.train_y_pred = np.sign(y_predict + self.b)
+        self.train_accuracy = sum(self.train_y_pred == self.y) / len(self.y)
 
     def predict(self, alpha):
 

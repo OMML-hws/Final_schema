@@ -67,6 +67,7 @@ def run_SVM_Q4():
     print(f"difference between m(a) and M(a): ", "{:.6f}".format(svm_D.diff))
     print("Optimization Time: " + str(round(svm_D.elapsed_time,4)) + " sec")
     print("Train Accuracy Letter D vs all: ", "{:.6f}".format(svm_D.train_accuracy))
+    print("Confusion Matrix - Train: \n", confusion_matrix(y_train, svm_D.train_y_pred))
     print("Test Accuracy Letter D vs all: ", "{:.6f}".format(svm_D.test_accuracy))
     print("Confusion Matrix: \n", confusion_matrix(y_test,svm_D.y_pred))
     print("================================================")
@@ -81,6 +82,7 @@ def run_SVM_Q4():
     print(f"difference between m(a) and M(a): ", "{:.6f}".format(svm_Q.diff))
     print("Optimization Time: " + str(round(svm_Q.elapsed_time,4)) + " sec")
     print("Train Accuracy Letter Q vs all: ", "{:.6f}".format(svm_Q.train_accuracy))
+    print("Confusion Matrix - Train: \n", confusion_matrix(y_train, svm_Q.train_y_pred))
     print("Test Accuracy Letter Q vs all: ", "{:.6f}".format(svm_Q.test_accuracy))
     print("Confusion Matrix: \n", confusion_matrix(y_test,svm_Q.y_pred))
     print("================================================")
@@ -95,6 +97,7 @@ def run_SVM_Q4():
     print(f"difference between m(a) and M(a): ", "{:.6f}".format(svm_O.diff))
     print("Optimization Time: " + str(round(svm_O.elapsed_time,4)) + " sec")
     print("Train Accuracy Letter O vs all: ", "{:.6f}".format(svm_O.train_accuracy))
+    print("Confusion Matrix - Train: \n", confusion_matrix(y_train, svm_O.train_y_pred))
     print("Test Accuracy Letter O vs all: ", "{:.6f}".format(svm_O.test_accuracy))
     print("Confusion Matrix: \n", confusion_matrix(y_test,svm_O.y_pred))
     print("================================================")
@@ -102,10 +105,12 @@ def run_SVM_Q4():
     print("================MULTICLASS MODEL================")
     print("================================================")
     print("Multiclass Train Accuracy: ", multiclass_train_accuracy)
+
     print("Multiclass Test Accuracy: ", multiclass_test_accuracy)
     print("Total Elapsed Time: ",round(svm_D.elapsed_time+svm_O.elapsed_time+svm_Q.elapsed_time,4))
-    #print("Confusion Matrix: \n", multilabel_confusion_matrix(labels_y_test['labels'].values,smv_ODQ_predictions_test,labels=["0","1","2"]))
-
+    c1 = [str(i) for i in labels_y_test['labels'].values]
+    c2 = [str(i) for i in smv_ODQ_predictions_test]
+    print("Confusion Matrix: \n", confusion_matrix(c1,c2,labels=["0","1","2"]))
 
 if __name__ == "__main__":
     run_SVM_Q4()

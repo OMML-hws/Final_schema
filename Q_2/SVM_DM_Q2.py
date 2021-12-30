@@ -18,8 +18,8 @@ class Preprocessing_Pipeline(object):
         
     def load_dataset(self,name):
         #loading the datasets
-        X = pd.read_csv('../Data/'+ str(name),usecols=self.x_cols)
-        Y = pd.read_csv('../Data/'+ str(name),usecols=self.y_cols)
+        X = pd.read_csv('./Data/'+ str(name),usecols=self.x_cols)
+        Y = pd.read_csv('./Data/'+ str(name),usecols=self.y_cols)
         return X,Y
     
     
@@ -88,6 +88,7 @@ class SVM_DM(object):
         self.test_accuracy = 0
         self.train_accuracy = 0
         self.obj_fun = 0
+        self.n_iters_solver = 0
 
         # global
         self.K= SVM_DM.Kernel(self.x,self.x,self.gamma)
@@ -219,6 +220,7 @@ class SVM_DM(object):
             start = time.time()
             sol = cvxopt.solvers.qp(P, q, G, h, A, b)
             end = time.time()
+            self.n_iters_solver += sol['iterations']
             self.elapsed_time += end-start
             new_alphas = np.array(sol["x"])
 

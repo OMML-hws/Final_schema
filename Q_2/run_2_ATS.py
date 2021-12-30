@@ -15,6 +15,7 @@ def run_SVM_Q2():
     print("C: ",svm.C)
     print("gamma value: ",svm.gamma)
     print("Number of iterations: ", svm.n_iters)
+    print("Number of iterations (CVXOPT): ", svm.n_iters_solver)
     print("Optimization Time: " + str(round(svm.elapsed_time, 4)) + " sec")
     print(f"difference between m(a) and M(a): ", "{:.6f}".format(svm.diff))
     print(f"value of q: {svm.qq}")

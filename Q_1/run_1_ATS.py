@@ -3,6 +3,7 @@ from sklearn.metrics import confusion_matrix
 from SVM_Q1 import SVM, Preprocessing_Pipeline
 from KFold_HP_tuningQ1 import Jobs_Parallelizer
 
+
 def run_SVM_Q1():
     pipeline = Preprocessing_Pipeline()
     data,labels = pipeline.load_dataset("Letters_Q_O.csv")
@@ -14,7 +15,7 @@ def run_SVM_Q1():
     alphas = svm.fit()
     svm.predict(alphas)
 
-    pre_trained_KFold = Jobs_Parallelizer.read_pickle('HP_sorted_list_Q1.pkl')
+    pre_trained_KFold = Jobs_Parallelizer.read_pickle("./Q_1/HP_sorted_list_Q1.pkl")
     val_acc = pre_trained_KFold["val_acc"].max()
 
     print("C: ",svm.C)

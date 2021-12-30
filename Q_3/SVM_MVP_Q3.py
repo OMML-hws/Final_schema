@@ -18,8 +18,8 @@ class Preprocessing_Pipeline(object):
         
     def load_dataset(self,name):
         #loading the datasets
-        X = pd.read_csv('../Data/'+ str(name),usecols=self.x_cols)
-        Y = pd.read_csv('../Data/'+ str(name),usecols=self.y_cols)
+        X = pd.read_csv('./Data/'+ str(name),usecols=self.x_cols)
+        Y = pd.read_csv('./Data/'+ str(name),usecols=self.y_cols)
         return X,Y
     
     
@@ -70,6 +70,7 @@ class SVM_MVP(object):
         self.train_accuracy = 0
         self.diff_threshold = 1e-4
         self.kkt_viol = 0
+        self.obj_fun = 0
     
     @staticmethod
     def Kernel(x, c, gamma):
@@ -126,6 +127,7 @@ class SVM_MVP(object):
         self.elapsed_time = end - start
         self.diff = diff
         self._train_accuracy(alpha)
+        self.obj_fun = ((0.5 * (alpha.T @ self.Q @ alpha)) - (alpha.T @ self.e))
         return alpha
 
     def return_R_S(self, alpha):

@@ -18,8 +18,8 @@ class Preprocessing_Pipeline(object):
         
     def load_dataset(self,name):
         #loading the datasets
-        X = pd.read_csv('../Data/'+ str(name),usecols=self.x_cols)
-        Y = pd.read_csv('../Data/'+ str(name),usecols=self.y_cols)
+        X = pd.read_csv('./Data/'+ str(name),usecols=self.x_cols)
+        Y = pd.read_csv('./Data/'+ str(name),usecols=self.y_cols)
         return X,Y
     
     

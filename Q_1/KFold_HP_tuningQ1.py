@@ -1,5 +1,4 @@
 import sys,os
-sys.path.append('../')
 from SVM_Q1 import SVM,Preprocessing_Pipeline
 from joblib import Parallel, delayed
 from sklearn.model_selection import KFold
@@ -118,6 +117,6 @@ if __name__ == "__main__":
     HP_result_dict.update(zip(HP_result_dict, result))
     HP_result_frame = pd.DataFrame(HP_result_dict.items(),columns=['hyper_params','val_acc'])
     HP_result_frame=HP_result_frame.sort_values(by='val_acc',ascending=False)
-    Jobs_Parallelizer.write_pickle('../outputs/HP_sorted_list_Q1.pkl',HP_result_frame)
+    Jobs_Parallelizer.write_pickle('HP_sorted_list_Q1_QQ.pkl',HP_result_frame)
     end = time.time()
     print('Elapsed Time: ', (end - start)/60)
